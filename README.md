@@ -23,9 +23,7 @@ It lets users generate secure passwords, assess their strength, copy them instan
 
 | Dark Theme | Light Theme |
 |-------------|--------------|
-| ![Dark Theme](https://via.placeholder.com/400x250/160628/ffffff?text=SafeBox+Dark) | ![Light Theme](https://via.placeholder.com/400x250/f9f9f9/333?text=SafeBox+Light) |
-
-*(Add real screenshots once you deploy it.)*
+| ![Dark Theme](<img width="1919" height="866" alt="Screenshot 2025-10-19 131623" src="https://github.com/user-attachments/assets/90fd8cf9-36f4-42e4-9610-f2fc6acb6ade" />) | ![Light Theme](<img width="1909" height="874" alt="Screenshot 2025-10-19 131316" src="https://github.com/user-attachments/assets/56b29ecf-0dca-4665-8433-b7496735e8b4" />) |
 
 ---
 
