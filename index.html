@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeBox Password Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo">🔐</div>
+        <div>
+          <h1>SafeBox</h1>
+          <p>Smart Password Generator</p>
+        </div>
+      </div>
+
+      <!-- 🌗 THEME TOGGLE -->
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </header>
+
+    <!-- Main -->
+    <main class="grid">
+      <!-- Password Generator -->
+      <section class="card generator">
+        <h2>Password Generator</h2>
+
+        <div class="display-container">
+          <input
+            readonly
+            placeholder="Password"
+            class="display"
+            data-passwordDisplay
+          />
+          <button class="copyBtn" data-copy>
+            <img src="https://cdn-icons-png.flaticon.com/512/54/54602.png" alt="copy" width="22" height="22" />
+          </button>
+        </div>
+
+        <div class="length-container">
+          <p>Password Length</p>
+          <p data-lengthNumber>10</p>
+        </div>
+
+        <input
+          type="range"
+          min="4"
+          max="20"
+          class="slider"
+          step="1"
+          data-lengthSlider
+        />
+
+        <div class="checks">
+          <div class="check">
+            <input type="checkbox" id="uppercase" />
+            <label for="uppercase">Uppercase</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="lowercase" />
+            <label for="lowercase">Lowercase</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="numbers" />
+            <label for="numbers">Numbers</label>
+          </div>
+          <div class="check">
+            <input type="checkbox" id="symbols" />
+            <label for="symbols">Symbols</label>
+          </div>
+        </div>
+
+        <div class="strength-container">
+          <p>Strength</p>
+          <div class="indicator" data-indicator></div>
+        </div>
+
+        <button class="generateButton">Generate Password</button>
+
+        <div class="save-row">
+          <input
+            type="text"
+            class="saveInput"
+            placeholder="Label (e.g. Gmail,Instagram,Bank)"
+          />
+          <button class="saveBtn">Save</button>
+        </div>
+      </section>
+
+      <!-- Saved Passwords -->
+      <section class="card saved">
+        <div class="saved-header">
+          <h2>Saved Passwords</h2>
+          <button class="btn-danger clearAll">Clear All</button>
+        </div>
+        <div class="saved-list"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; <span id="year"></span> SafeBox — All rights reserved.</p>
+      <small>Made With ❤️ by Aabid Nabi</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
