@@ -42,4 +42,4 @@ It lets users generate secure passwords, assess their strength, copy them instan
 
 1. **Clone this repository**
    ```bash
-   git clone https://github.com/yourusername/safebox-password-generator.git
+   git clone https://github.com/Aabidnabi/secure-password-generator.git
