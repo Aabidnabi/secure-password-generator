@@ -157,7 +157,7 @@ clearAll.addEventListener("click", () => {
 // Load saved on start
 renderSaved();
 
-// 🌗 Theme Toggle + Auto Detect
+// Theme Toggle + Auto Detect
 const themeToggle = document.getElementById("themeToggle");
 const savedTheme = localStorage.getItem("theme");
 

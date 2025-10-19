@@ -1,20 +1,23 @@
 :root {
-  --bg-color: #160628;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --text-color: #ccc;
-  --accent: #6e4bff;
-  --accent2: #ffb86b;
-  --input-bg: #1a0e2a;
+  /* 🌑 Dark Theme (Default) */
+  --bg-color: #0e0b16;
+  --card-bg: linear-gradient(145deg, rgba(32, 26, 50, 0.9), rgba(20, 14, 35, 0.9));
+  --text-color: #d6d6e0;
+  --accent: #7f5af0;
+  --accent2: #2cb67d;
+  --input-bg: rgba(25, 20, 45, 0.9);
+  --border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* 🌞 Light Theme */
 .light {
   --bg-color: #f9f9f9;
-  --card-bg: rgba(0, 0, 0, 0.05);
+  --card-bg: #ffffff;
   --text-color: #333;
   --accent: #4a00e0;
   --accent2: #8e2de2;
   --input-bg: #fff;
+  --border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Reset */
@@ -44,8 +47,9 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
+  width: 100%;
+  max-width: 900px;
 }
 
 .brand {
@@ -72,7 +76,7 @@ body {
 /* Theme Toggle */
 .theme-toggle {
   background: var(--card-bg);
-  border: none;
+  border: 1px solid var(--border-color);
   border-radius: 50%;
   width: 42px;
   height: 42px;
@@ -93,14 +97,25 @@ body {
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
 }
 
+/* Card Base */
 .card {
   background: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 1.5rem;
-  backdrop-filter: blur(10px);
-  transition: background 0.3s ease;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease, border 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
 }
 
 /* Password Generator */
@@ -123,6 +138,7 @@ body {
   word-break: break-all;
 }
 
+/* ✅ Fix: Copy Icon Visible in Dark Mode */
 .copyBtn {
   position: absolute;
   top: 50%;
@@ -131,8 +147,25 @@ body {
   background: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
+.copyBtn img {
+  width: 22px;
+  height: 22px;
+  filter: invert(1) brightness(1.5);
+  transition: filter 0.3s ease;
+}
+
+.light .copyBtn img {
+  filter: invert(0);
+}
+
+.copyBtn:hover img {
+  filter: invert(62%) sepia(45%) saturate(648%) hue-rotate(80deg) brightness(1.2);
+}
+
+/* Slider + Inputs */
 .length-container {
   display: flex;
   justify-content: space-between;
@@ -146,6 +179,7 @@ body {
   width: 100%;
   cursor: pointer;
   margin-bottom: 1rem;
+  accent-color: var(--accent);
 }
 
 .checks {
@@ -162,8 +196,14 @@ body {
   background: rgba(255, 255, 255, 0.08);
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
+  transition: background 0.3s;
 }
 
+.check:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Strength Indicator */
 .strength-container {
   display: flex;
   justify-content: space-between;
@@ -178,6 +218,7 @@ body {
   background: #ccc;
 }
 
+/* Buttons */
 .generateButton {
   width: 100%;
   padding: 0.75rem;
@@ -187,13 +228,15 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .generateButton:hover {
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 90, 240, 0.4);
 }
 
+/* Save Row */
 .save-row {
   display: flex;
   gap: 0.5rem;
@@ -203,26 +246,31 @@ body {
 .saveInput {
   flex: 1;
   padding: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: transparent;
+  background: var(--input-bg);
   color: var(--text-color);
+  outline: none;
+  transition: border 0.3s;
+}
+
+.saveInput:focus {
+  border-color: var(--accent);
 }
 
 .saveBtn {
   padding: 0.5rem 1rem;
   border: none;
-  background: var(--accent2);
-  color: #160628;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  color: #fff;
   font-weight: 700;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .saveBtn:hover {
-  background: var(--accent);
-  color: #fff;
+  opacity: 0.9;
 }
 
 /* Saved Passwords */
@@ -252,12 +300,22 @@ body {
 
 .mask {
   font-family: monospace;
-  color: black;
-  background:#f9f9f9;
-  padding: 0.3rem 0.5rem;
+  color: var(--accent2);
+  background:;
+  padding: 0.3rem 0.6rem;
   border-radius: 6px;
   word-break: break-all;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
 }
+
+/* Adjust for Light Mode */
+.light .mask {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--accent);
+}
+
 
 .btn-ghost,
 .btn-danger {
@@ -271,15 +329,22 @@ body {
 .btn-ghost {
   background: transparent;
   color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .btn-ghost:hover {
+  color: var(--accent2);
   text-decoration: underline;
 }
 
 .btn-danger {
-  background: #ff0000;
+  background: #ff3b3b;
   color: #fff;
+  transition: background 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: #ff5555;
 }
 
 /* Footer */
@@ -287,17 +352,28 @@ footer {
   margin-top: 2rem;
   text-align: center;
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 992px) {
   .grid {
     grid-template-columns: 1fr;
+    margin-bottom: 0;
   }
+
   .header {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 }
 
@@ -305,13 +381,22 @@ footer {
   .card {
     padding: 1rem;
   }
+
   .display {
     font-size: 1rem;
   }
+
   .save-row {
     flex-direction: column;
   }
+
   .saveBtn {
     width: 100%;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
   }
 }
