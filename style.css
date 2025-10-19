@@ -252,6 +252,7 @@ body {
 
 .mask {
   font-family: monospace;
+  color: black;
   background:#f9f9f9;
   padding: 0.3rem 0.5rem;
   border-radius: 6px;
